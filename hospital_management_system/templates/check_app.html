@@ -1,0 +1,54 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Appointment</title>
+    <link rel="stylesheet" href="{%static 'check_app.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navigation">
+            <a href="">Hospital Management System</a>
+            <!-- <p>PG Accomodation</p> -->
+        </div>
+        <ul>
+            <li><a href="{%url 'home'%}">BACK</a></li>
+        </ul>
+    </nav>
+
+    <div class="check">
+        <form action="{%url 'check_app' %}" method="post">
+            {%csrf_token%}
+            <label for="">Enter your Phone number</label>
+            <input type="number" name="phone"><br/>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+    <div class="patients_list">
+        <table border="1" >
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Phone No.</th>
+                    <th>Symptoms</th>
+                    <th>App Date</th>
+                    <th>Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {%for appointment in pat_details%}
+                    <td>{{appointment.name}}</td>
+                    <td>{{appointment.phone}}</td>
+                    <td>{{appointment.symptoms}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td><a href="{%url 'cancel__appointment' appointment.id %}">Cancel Appointment</a> </td>
+                </tr>
+                {%endfor%}
+</body>
+</html>

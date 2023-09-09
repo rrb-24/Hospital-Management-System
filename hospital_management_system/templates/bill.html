@@ -1,0 +1,91 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <link rel="stylesheet" href="{%static 'bill.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navigation">
+            <a href="{%url 'patients_list'%}">Hospital Management System</a>
+            <!-- <p>PG Accomodation</p> -->
+        </div>
+        <ul>
+            <li><a href="{%url 'patients_list'%}">Back</a></li>
+        </ul>
+    </nav>
+    <div class="bill_body">
+        
+        <h1>Hospital Management System</h1>
+        <h3>DayanandaSagar Academy Of Technology And Management<br/>Kanakpura main road, Bangalore-560082</h3>
+        <table style="width: 100%;"> 
+            <tr >
+                <th style="width: 15%;text-align:right">Name:</th>
+                <td style="width:40%;text-align:left">{{data.name}}</td>
+                <th style="width: 25%; text-align:right" >Phone:</th>
+                <td style="width: 20%;text-align:left">6362527804</td>
+            </tr>
+            
+        </table>
+        <table style="width: 100%;" >
+            <tr >
+                <th style="width: 25%;">Age</th>
+                <th style="width: 25%;">Weight</th>
+                <th style="width: 50%;">Doctor Name</th>
+            </tr>
+            <tr style="text-align: center;">
+                <td style="width: 25%;">21</td>
+                <td style="width: 25%;">75 kg</td>
+                <td style="width: 50%;">{{data.doctorName}}</td>
+            </tr>
+        </table>
+        <div class="line">
+            <!-- <p>_____________________________________________________________________________</p> -->
+        </div>
+        <div class="amount">
+            <table>
+                <tr>
+                    <th style="text-align: left;">Room Charge</th>
+                    <td>{{data.roomCharge}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Medicine Cost</th>
+                    <td>{{data.medicineCost}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Doctor Fee</th>
+                    <td>{{data.doctorFee}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Other Charge</th>
+                    <td>{{data.OtherCharge}}</td>
+                </tr>
+            </table>
+        </div>
+        <img src="{%static 'images/medical_logo.jpg' %}" alt="">
+        <div class="line">
+            <!-- <p>_____________________________________________________________________________</p> -->
+        </div>
+        <div class="total">
+            <table>
+                <tr>
+                    <th style="text-align: left;">Total</th>
+                    <td style="text-align: right;padding-right:40px;">{{data.total}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="sign">
+            Signature
+        </div>
+        <div class="print">
+            <a href="javascript:window.print()">Print</a>
+        </div>
+        
+    </div>
+</body>
+</html>

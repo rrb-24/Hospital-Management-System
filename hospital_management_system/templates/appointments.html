@@ -1,0 +1,70 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+    <link rel="stylesheet" href="{%static 'appointments.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navigation">
+            <a href="{%url 'admin_panal'%}">Hospital Management System</a>
+            <!-- <p>PG Accomodation</p> -->
+        </div>
+        <ul>
+            <li><a href="{%url 'admin_panal'%}">Back</a></li>
+            <li><a href="{%url 'admin_login'%}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="total_appointments">
+        <p>Total Appointments : {{app_count}}</p> 
+    </div>
+    <div class="add_appointments">
+        <a href="{%url 'create_appointment' %}">+ Add Appointment </a>
+    </div>
+    <div class="patients_list">
+        <table border="1" >
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Phone No.</th>
+                    <th>Symptoms</th>
+                    <th>Doctor Name</th>
+                    <th>App Date</th>
+                    <th>Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {%for appointment in appointments%}
+                    <td>{{appointment.name}}</td>
+                    <td>{{appointment.phone}}</td>
+                    <td>{{appointment.symptoms}}</td>
+                    <td>{{appointment.doctorName}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td><a href="{%url 'cancel_appointment' appointment.id %}">Cancel Appointment</a> </td>
+                </tr>
+                {%endfor%}
+                <!-- <tr>
+                    <td>Raghu</td>
+                    <td>6362527804</td>
+                    <td>Cough</td>
+                    <td>Dr. Preetham</td>
+                    <td>12/12/2023</td>
+                </tr>
+                <tr>
+                    <td>Sathvik</td>
+                    <td>6362527804</td>
+                    <td>Cough</td>
+                    <td>Dr. Preetham</td>
+                    <td>12/12/2023</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

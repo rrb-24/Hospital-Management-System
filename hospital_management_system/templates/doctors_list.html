@@ -1,0 +1,72 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+    <link rel="stylesheet" href="{%static 'doctors_list.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navigation">
+            <a href="{%url 'admin_panal'%}">Hospital Management System</a>
+            <!-- <p>PG Accomodation</p> -->
+        </div>
+        <ul>
+            <li><a href="{%url 'admin_panal'%}">Back</a></li>
+            <li><a href="{%url 'admin_login'%}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="total_doctors">
+        <p>Total Doctors : {{doctors_count}}</p> 
+    </div>
+    <div class="add_doctors">
+        <a href="{%url 'add_doctor' %}">+ Add Doctor </a>
+    </div>
+    <div class="doctors_list">
+        <table border="1" >
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Phone No.</th>
+                    <th>Qualification</th>
+                    <th>Department</th>
+                    <th>View/Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for doctor in doctors%}
+                <tr>
+                    <td>{{doctor.name}}</td>
+                    <td>{{doctor.phone}}</td>
+                    <td>{{doctor.qualification}}</td>
+                    <td>{{doctor.department}}</td>
+                    <td><a href="{%url 'view_edit_doctor' doctor.id %}">View/Edit</a></td>
+                    <td><a href="{%url 'delete_doctor' doctor.id %}">Delete</a></td>
+                </tr>
+                {%endfor%}
+                <!-- <tr>
+                    <td>Raghu</td>
+                    <td>6362527804</td>
+                    <td>M.B.B.S</td>
+                    <td>ortho</td>
+                    <td><a href="">View/Edit</a></td>
+                    <td><a href="">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Sathvik</td>
+                    <td>6362527804</td>
+                    <td>M.B.B.S</td>
+                    <td>cardio</td>
+                    <td><a href="">View/Edit</a></td>
+                    <td><a href="">Delete</a></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

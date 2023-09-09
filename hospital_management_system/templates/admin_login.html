@@ -1,0 +1,63 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'admin_login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+          }
+    </script>
+
+    <nav>
+      <div class="navigation">
+          <a href="{%url 'home'%}">Hospital Management System</a>
+      </div>
+      <ul>
+          <li><a href="{%url 'home'%}">Back</a></li>
+      </ul>
+  </nav>
+
+  <div id="hms_name">
+    <br>
+    <br>
+    <h1>Welcome to Hospital Management System</h1>
+    <h3>The heart of your healthcare....</h3>
+  </div>
+  <div class="center">
+    <h1>Login</h1>
+    <form action="admin_login" method="POST">
+      {% csrf_token %}
+      <div class="text_field">
+        <input type="text" required name="username">
+        <label>Username</label>
+        <span></span>
+      </div>
+      <div class="text_field">
+        <input type="password" required name="password" id="pass">
+        <label>Password</label>
+        <span></span>
+        
+      </div>
+      <input type="checkbox" onclick="myFunction()"> Show Password
+      <input type="submit" value="Login">
+      <div class="signup_link">Not a Member? <a href="">Contact Admin</a></div>
+    </form>
+  </div>
+</body>
+  
+
+</html>

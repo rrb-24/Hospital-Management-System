@@ -1,0 +1,160 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panal</title>
+    <link rel="stylesheet" href="{%static 'admin_panal.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navigation">
+            <a href="">Hospital Management System</a>
+            <!-- <p>PG Accomodation</p> -->
+        </div>
+        <ul>
+            <li><a href="{%url 'home'%}">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="admin">
+        <img src="{%static 'images/admin.png' %}" alt="" id="admin_img">
+        <!-- <h1>Welcome {{user_details}}</h1>
+        <h2>
+            Name:{{user_details.first_name}} {{user_details.last_name}}.<br>
+            Email:{{user_details.email}}<br>
+        </h2> -->
+        <h3>Admin</h3>
+        <h2>{{user_details.first_name}} {{user_details.last_name}}</h2>
+        <p>
+            <h3>Contact:</h3><br>
+           <h4>{{user_details.email}}</h4> <br>
+        </p>
+    </div>
+    <div class="patients">
+        <form action="{%url 'patients_list' %}"><button type="submit">
+            <h2>{{pat_count}}</h2>
+            <p>
+                Patients
+            </p>
+            <img src="{%static 'images/patient.png' %}" alt="">
+        </button></form>
+        
+    </div>
+    <div class="doctors">
+        <form action="{%url 'doctors_list' %}"><button type="submit">
+            <h2>{{doc_count}}</h2>
+            <p>
+                Doctors
+            </p>
+            <img src="{%static 'images/doctor.png' %}" alt="">
+        </button></form>
+        
+    </div>
+    <div class="appointments">
+        <form action="{%url 'appointments' %}"><button type="submit">
+            <h2>{{app_count}}</h2>
+            <p>
+                Appointments
+            </p>
+            <img src="{%static 'images/app.png' %}" alt="">
+        </button></form>
+        
+    </div>
+    <div class="today_app">
+        <h2>Today's appointments</h2>
+        
+           <div class="patients_list">
+            <table border="1">
+                <thead>
+                    <tr>
+                    <th>Patient Name</th>
+                    <th>Phone No.</th>
+                    <th>Symptoms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for todays_app in tod_app%}
+                    <tr>
+                        <td>{{todays_app.name}}</td>
+                        <td>{{todays_app.phone}}</td>
+                        <td>{{todays_app.symptoms}}</td>
+                    </tr>
+                    {%endfor%}
+                    <!-- <tr>
+                        <td>Raghu</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr>
+                    <tr>
+                        <td>Sathvik</td>
+                        <td>6362527804</td>
+                        <td>Cough</td>
+                        <td>Dr. Preetham</td>
+                    </tr> -->
+                </tbody>
+            </table>
+           </div>
+        
+    </div>
+</body>
+</html>

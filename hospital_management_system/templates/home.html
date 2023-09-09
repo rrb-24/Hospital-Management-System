@@ -1,0 +1,49 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{%static 'home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<nav>
+    <div class="navigation">
+        <a href="{%url 'home'%}">Hospital Management System</a>
+        <!-- <p>PG Accomodation</p> -->
+    </div>
+    <ul>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="admin_login">Login</a></li>
+        <!-- <li><a href="admin">Admin Login</a></li> -->
+    </ul>
+</nav>
+<body>
+        <div class="appointment">
+            <a href="{%url 'create__appointment' %}">Book an appointment</a>
+            
+        </div>
+        <div class="taken">
+            <p>
+               Already Have an appointment? <a href="{%url 'check_app' %}" > check</a>
+            </p>
+        </div>
+    
+
+
+
+       
+</body>
+<footer>
+    <div class="footer_content">
+        <p1>HOSPITAL MANAGEMENT SYSTEM</p1>
+        <p>DBMS Mini-Project, Dayananda Sagar Academy Of Technology and Management</p>
+    </div>
+    <div class="footer_bottom">
+        <p>Copyright &copy; 2022 1DT20CS091 | 1DT20CS081 | 1DT20CS105 </p>
+    </div>
+</footer>
+</html>
